@@ -1,5 +1,5 @@
 {% set name = "flake8-functions-names" %}
-{% set version = "0.2.0" %}
+{% set version = "0.3.0" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/flake8_functions_names-{{ version }}.tar.gz
-  sha256: d5d4b4303989062fa799d8746f55cc2d5fe1cd4dcea2dec589cd522ca808fe4a
+  sha256: 1a86ad60a04ce8dbe5af10275eaf56e2a3c23884f88e103f9fac5489d0435b81
 
 build:
   number: 0
@@ -29,7 +29,7 @@ test:
     - flake8_functions_names.utils
   commands:
     - pip check
-    - 'flake8 --version | grep flake8-functions-names'
+    - flake8 --version | grep flake8-functions-names
   requires:
     - flake8
     - m2-grep  # [win]
