@@ -7,20 +7,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/flake8_functions_names-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/flake8_functions_names-{{ version }}.tar.gz
   sha256: 27aeb881636680a130f609482c1d0f37d1b2e84a76b20b813d079c888ee0a13e
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.8
+    - python {{ python_min }}
+    - setuptools
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - setuptools
 
 test:
@@ -29,11 +30,12 @@ test:
     - flake8_functions_names.utils
   commands:
     - pip check
-    - flake8 --version | grep flake8-functions-names
+    - flake8 --version | grep flake8_functions_names
   requires:
     - flake8
     - m2-grep  # [win]
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/Melevir/flake8-functions-names
