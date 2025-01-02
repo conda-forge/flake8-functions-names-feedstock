@@ -19,6 +19,7 @@ requirements:
   host:
     - pip
     - python {{ python_min }}
+    - setuptools
   run:
     - python >={{ python_min }}
     - setuptools
@@ -29,7 +30,7 @@ test:
     - flake8_functions_names.utils
   commands:
     - pip check
-    - flake8 --version | grep flake8-functions-names
+    - flake8 --version | grep flake8_functions_names
   requires:
     - flake8
     - m2-grep  # [win]
